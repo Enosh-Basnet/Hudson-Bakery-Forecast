@@ -47,13 +47,6 @@ hudson/
 git clone https://github.com/yourname/hudsons-bakery.git
 cd hudsons-bakery
 
-# Create virtual environment (Windows)
-python -m venv .venv
-.venv\Scripts\activate
-
-# Or macOS/Linux
-python3 -m venv .venv
-source .venv/bin/activate
 ```
 
 ---
@@ -129,7 +122,26 @@ CREATE TABLE IF NOT EXISTS job_runs (
     ready_for_prediction boolean DEFAULT false
 );
 ```
+## ⚡ Step 5. Run the FastAPI backend (Uvicorn)
 
+The API (in `api/main.py`) exposes endpoints for file uploads, job status checks, and integrations with the worker.
+
+Start it with [Uvicorn](https://www.uvicorn.org/):
+
+```bash
+# From project root
+uvicorn api.main:app --reload --port 8000
+```
+
+- `api.main:app` → points to the FastAPI instance in `api/main.py`.
+- `--reload` → auto-reloads the server when you change code.
+- `--port 8000` → binds the server to port 8000.
+
+Now the API is available at [http://localhost:8000](http://localhost:8000).
+
+⚠️ You should run this **before** starting the worker and UI, because they rely on the API endpoints.
+
+---
 ---
 
 ## 🚀 Step 5. Run the background worker
