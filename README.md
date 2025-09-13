@@ -142,7 +142,12 @@ Now the API is available at [http://localhost:8000](http://localhost:8000).
 ⚠️ You should run this **before** starting the worker and UI, because they rely on the API endpoints.
 
 ---
----
+##Create your account in Upstash (OPTIONAL!!! ONLY IF YOU WANT TO MAKE YOUR OWN, OTHERWISE SKIP THIS STEP !!!)
+
+visit: https://upstash.com/ and create your account.
+Next, step after your account creation will be to create your database in Upstash.
+Finally, after you create your account, look for redis url in the console. It will look something like redis-cli --tls -u redis://default:********@golden-python-13451.upstash.io:6379
+Copy that url into the .env file under AND PASTE IT IN REDIS_URL.
 
 ## 🚀 Step 5. Run the background worker
 
